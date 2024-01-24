@@ -1,0 +1,57 @@
+class BankAccount:
+    def __init__(self, account_holder, balance=0):
+        self.account_holder = account_holder
+        self.balance = balance
+
+    def deposit(self, amount):
+        if amount > 0:
+            self.balance += amount
+            print(f"Deposit Completed.New balance: ₹{self.balance}")
+        else:
+            print("Enter the crt Amount")
+
+    def withdraw(self, amount):
+        if amount > 0 and amount < self.balance:
+            self.balance -= amount
+            print(f"Withdrawal  ₹{amount} successful.New balance: ₹{self.balance}")
+    
+        else:
+            print("Invalid withdrawal amount. Please enter a positive value.")
+
+    def check_balance(self):
+        print(f"Current balance for your account {self.account_holder}: ₹{self.balance}")
+
+
+def main():
+    account_holder =float(input("Enter The Account Number: "))
+    initial_balance = float(input("Enter the current Balance:"))
+
+   
+    account = BankAccount(account_holder, initial_balance)
+
+    while True:
+        print("\n1:Depoist")
+        print("\n2:Withdraw")
+        print("\n3:Checkbalance")
+        print("\n4:Exit")
+            
+
+        choice = input("\nEnter your choice (1-4): \n")
+
+        if choice == "1":
+            amount = float(input("\nEnter credit Amount ₹: "))
+            account.deposit(amount)
+        elif choice == "2":
+            amount = float(input("\nEnter depit Amount ₹: "))
+            account.withdraw(amount)
+        elif choice == "3":
+            account.check_balance()
+        elif choice == "4":
+            print("\nThe Exit:Thank You:")
+            break
+        else:
+            print("Invalid choice")
+            break
+
+if __name__ == "__main__":
+    main()
